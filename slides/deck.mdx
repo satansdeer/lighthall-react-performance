@@ -1,0 +1,274 @@
+import {
+  CodeSurfer,
+  CodeSurferColumns,
+  Step,
+} from "code-surfer";
+import { github, vsDark } from "@code-surfer/themes";
+import { ButtonWithDelay } from "./src/ButtonWithDelay";
+import { AnimationWithLag } from "./src/AnimationWithLag";
+import { ChromeProfiler } from "./src/ChromeProfiler";
+import { ConsoleTime } from "./src/ConsoleTime";
+import { PerformanceNow } from "./src/PerformanceNow";
+import ReactDevTools from "./src/ReactDevToolsExample";
+import AvoidRerenders from "./src/AvoidRerenders";
+import AvoidRerenders1 from "./src/AvoidRerenders1";
+import AvoidRerenders2 from "./src/AvoidRerenders2";
+import logo from "./react_logo.png";
+
+export const theme = github;
+
+## We will discuss:
+
+- 🎯 The goal of optimization
+- 🐛 What causes performance issues
+- 📏 How to measure performance in React
+- 🔧 How to fix performance issues
+
+---
+
+## The goal of optimization
+
+---
+
+## RAIL
+
+---
+
+- Response
+- Animation
+- Idle
+- Load
+
+---
+
+<CodeSurferColumns sizes={[1, 2]}>
+
+<Step title="Response" subtitle="Process events in under 50ms">
+
+<ButtonWithDelay delay={50} />
+
+<ButtonWithDelay delay={300} />
+
+</Step>
+
+<Step title="Animation" subtitle="Animation: produce a frame in 10 ms">
+
+<AnimationWithLag interval={10} />
+
+<AnimationWithLag interval={60} />
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+## Idle
+Maximize idle time 🤷
+
+---
+
+<CodeSurferColumns>
+
+<Step title="Load" subtitle="Deliver content and become interactive in under 5 seconds">
+
+```md
+Fast load
+```
+
+```md
+Slow load
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+## What causes performance issues
+
+---
+
+- Expensive renders
+- Too many re-renders
+- Expensive function calls
+- Too many function calls
+- Memory problems: leak and bloat
+
+---
+
+- Expensive renders
+- Too many re-renders
+- Expensive function calls
+- Too many function calls
+- ~~Memory problems: leak and bloat~~
+
+---
+
+## How to find bottlenecks
+
+---
+
+- React DevTools
+- Chrome Profiler
+- `console.time` and `console.timeEnd`
+- performance.now()
+
+---
+
+<CodeSurferColumns sizes={[5, 4]}>
+
+<Step title="React DevTools">
+
+```jsx 14:38 file=./src/ReactDevToolsExample.example.js
+```
+
+<ReactDevTools/>
+
+</Step>
+
+<Step title="React DevTools">
+
+```jsx 1:12 file=./src/ReactDevToolsExample.example.js
+```
+
+<ReactDevTools/>
+
+</Step>
+
+<Step title="React DevTools">
+
+```jsx 14:38 file=./src/ReactDevToolsExample.example.js
+```
+
+<ReactDevTools/>
+
+</Step>
+
+<Step title="Chrome profiler">
+
+```jsx file=./src/ChromeProfiler.example.js
+```
+
+<ChromeProfiler/>
+
+</Step>
+
+<Step title="console.time & console.timeEnd">
+
+```jsx 1:12 file=./src/ConsoleTime.example.js
+```
+
+<ConsoleTime/>
+
+</Step>
+
+<Step title="performance.now()">
+
+```jsx 1:12 file=./src/PerformanceNow.example.js
+```
+
+<PerformanceNow/>
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+## How to fix performance issues
+
+---
+
+- Avoid re-renders: memo, useMemo, useCallback
+- Optimize Context
+- Virtualise lists
+- Be frugal with calculations
+- Use the idle callback
+- Offload to a service worker
+- Throttle and debounce
+
+---
+
+- Avoid re-renders: memo, useMemo, useCallback
+- Optimize Context
+- Virtualise lists
+- Be frugal with calculations
+- ~~Use the idle callback~~
+- ~~Offload to a service worker~~
+- ~~Throttle and debounce~~
+
+---
+
+<CodeSurferColumns sizes={[5, 4]}>
+
+<Step title="Avoid re-renders">
+
+```jsx 14:38 file=./src/AvoidRerenders.example.jsx
+```
+
+<AvoidRerenders/>
+
+</Step>
+
+<Step title="Avoid re-renders">
+
+```jsx 1:12 file=./src/AvoidRerenders.example.jsx
+```
+
+<AvoidRerenders/>
+
+</Step>
+
+<Step title="Avoid re-renders" subtitle="Use the React.memo">
+
+```jsx 1:12 file=./src/AvoidRerenders1.example.jsx
+```
+
+<AvoidRerenders1/>
+
+</Step>
+
+<Step title="Avoid re-renders" subtitle="Use the React.memo">
+
+```jsx 14:38 file=./src/AvoidRerenders1.example.jsx
+```
+
+<AvoidRerenders1/>
+
+</Step>
+
+<Step title="Avoid re-renders" subtitle="Use the useCallback">
+
+```jsx 14:38 file=./src/AvoidRerenders2.example.jsx
+```
+
+<AvoidRerenders2/>
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns sizes={[5, 4]}>
+
+<Step title="Optimize context">
+
+```jsx 14:38 file=./src/AvoidRerenders.example.jsx
+```
+
+<AvoidRerenders/>
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+## Virtualize lists
+
+---
+
+## Be frugal with calculations
