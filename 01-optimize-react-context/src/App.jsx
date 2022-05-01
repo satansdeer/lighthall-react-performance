@@ -1,13 +1,7 @@
 import { memo } from "react";
 import { ItemsProvider, useItems, useOnItemClick } from "./ItemsContext";
 
-type ItemProps = {
-  text: string;
-  liked: boolean;
-  id: number;
-};
-
-const Item = memo(({ text, id, liked }: ItemProps) => {
+const Item = memo(({ text, id, liked }) => {
   const onItemClick = useOnItemClick();
 
   const onClick = () => {
@@ -35,11 +29,9 @@ const ItemsList = memo(() => {
 
 function App() {
   return (
-    <>
-      <ItemsProvider>
-        <ItemsList />
-      </ItemsProvider>
-    </>
+    <ItemsProvider>
+      <ItemsList />
+    </ItemsProvider>
   );
 }
 
