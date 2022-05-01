@@ -9,6 +9,7 @@ import { AnimationWithLag } from "./src/AnimationWithLag";
 import { ChromeProfiler } from "./src/ChromeProfiler";
 import { ConsoleTime } from "./src/ConsoleTime";
 import { PerformanceNow } from "./src/PerformanceNow";
+import { LoadContentWithDelay } from "./src/LoadContentWithDelay";
 import ReactDevTools from "./src/ReactDevToolsExample";
 import AvoidRerenders from "./src/AvoidRerenders";
 import AvoidRerenders1 from "./src/AvoidRerenders1";
@@ -53,9 +54,9 @@ export const theme = github;
 
 <Step title="Animation" subtitle="Animation: produce a frame in 10 ms">
 
-<AnimationWithLag interval={10} />
+<AnimationWithLag interval={5} />
 
-<AnimationWithLag interval={60} />
+<AnimationWithLag interval={80} slow />
 
 </Step>
 
@@ -72,13 +73,9 @@ Maximize idle time 🤷
 
 <Step title="Load" subtitle="Deliver content and become interactive in under 5 seconds">
 
-```md
-Fast load
-```
+<LoadContentWithDelay delay={2000}/>
 
-```md
-Slow load
-```
+<LoadContentWithDelay delay={6000} slow/>
 
 </Step>
 
@@ -252,18 +249,7 @@ Slow load
 
 ---
 
-<CodeSurferColumns sizes={[5, 4]}>
-
-<Step title="Optimize context">
-
-```jsx 14:38 file=./src/AvoidRerenders.example.jsx
-```
-
-<AvoidRerenders/>
-
-</Step>
-
-</CodeSurferColumns>
+## Optimize Context
 
 ---
 

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import slow from "./slow.png";
+import fast from "./fast.png";
 
 export const AnimationWithLag = (props) => {
   const [angle, setAngle] = useState(0);
@@ -17,7 +19,8 @@ export const AnimationWithLag = (props) => {
   return (
     <img
       style={{ position: "absolute", transform: `rotate(${angle}deg)` }}
-      src="https://picsum.photos/id/1/200/200"
+			width="300px"
+      src={props.slow ? slow : fast}
       alt="rotation example"
     />
   );
